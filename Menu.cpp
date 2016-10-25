@@ -35,8 +35,10 @@ void ShowMenu4()
 {
 	std::cout << std::endl << "[1]. Операции сравнения";
 	std::cout << std::endl << "[2]. Сложение";
-	std::cout << std::endl << "[3]. Приведение типа к double";
-	std::cout << std::endl << "[4]. Выход";
+	std::cout << std::endl << "[3]. Умножение";
+	std::cout << std::endl << "[4]. Деление";
+	std::cout << std::endl << "[5]. Приведение типа к double";
+	std::cout << std::endl << "[6]. Выход";
 	std::cout << std::endl << "Введите номер требуемого пункта подменю: ";
 }
 //Функция отображения подподменю операций сравнения
@@ -219,11 +221,11 @@ void Menu(Fraction **PFraction)
 			int C4 = -1;
 			int C5 = -1;
 			char *Compare = "", *CompareResult = "";
-			while (C4 != 4)//4- выход
+			while (C4 != 6)//6- выход
 			{
 				ShowMenu4();
 				std::cin >> C4;
-				while (C4 < 1 || C4>4 || std::cin.fail())
+				while (C4 < 1 || C4>6 || std::cin.fail())
 				{
 					std::cin.clear();
 					std::cin.ignore(std::cin.rdbuf()->in_avail());//Очистка буфера
@@ -302,7 +304,39 @@ void Menu(Fraction **PFraction)
 						std::cout << "[" << i + 1 << "] " << *(PFraction[Index]) << " + " << *(PFraction[i]) << "\t== " << *F << std::endl;
 					}
 					break;
-				case 3://[3]. Приведение типа к double
+				case 3://[3]. Умножение
+					std::cout << std::endl << "Индекс эталонного объекта: ";
+					std::cin >> Index;
+					while (Index<0 || Index >= Count || std::cin.fail())
+					{
+						std::cin.clear();
+						std::cin.ignore(std::cin.rdbuf()->in_avail());//Очистка буфера
+						std::cout << std::endl << "Индекс введен неверно, введите еще раз: ";
+						std::cin >> Index;
+					}
+					for (i = 0; i < Count; i++)
+					{
+						*F = *(PFraction[Index]) * *(PFraction[i]);
+						std::cout << "[" << i + 1 << "] " << *(PFraction[Index]) << " * " << *(PFraction[i]) << "\t== " << *F << std::endl;
+					}
+					break;
+				case 4://[4]. Деление
+					std::cout << std::endl << "Индекс эталонного объекта: ";
+					std::cin >> Index;
+					while (Index<0 || Index >= Count || std::cin.fail())
+					{
+						std::cin.clear();
+						std::cin.ignore(std::cin.rdbuf()->in_avail());//Очистка буфера
+						std::cout << std::endl << "Индекс введен неверно, введите еще раз: ";
+						std::cin >> Index;
+					}
+					for (i = 0; i < Count; i++)
+					{
+						*F = *(PFraction[Index]) / *(PFraction[i]);
+						std::cout << "[" << i + 1 << "] " << *(PFraction[Index]) << " / " << *(PFraction[i]) << "\t== " << *F << std::endl;
+					}
+					break;
+				case 5://[5]. Приведение типа к double
 					for (i = 0; i < Count; i++)
 					{
 						std::cout << "[" << i + 1 << "] " << "(double)" << *(PFraction[i]) << "\t== " << (double)(*(PFraction[i])) << std::endl;
@@ -310,7 +344,7 @@ void Menu(Fraction **PFraction)
 					break;
 				}//switch (C4)
 				delete F;//Удаление объекта и декремент Count
-			}//while (C4 != 4)//4- выход
+			}//while (C4 != 6)//6- выход
 			break;
 		}//switch (C)
 	}//while (C != 'е')//е - выход

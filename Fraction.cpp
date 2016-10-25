@@ -117,6 +117,22 @@ Fraction Fraction::operator+(Fraction & Addendum)
 	Temp.Reduction();
 	return Temp;
 }
+//Умножение 2-х объектов
+Fraction Fraction::operator*(Fraction & Multiplier)
+{
+	Fraction Temp = *this;
+	Temp.Mul(Multiplier);
+	Temp.Reduction();
+	return Temp;
+}
+//Деление 2-х объектов
+Fraction Fraction::operator/(Fraction & Divider)
+{
+	Fraction Temp = *this;
+	Temp.Div(Divider);
+	Temp.Reduction();
+	return Temp;
+}
 //Равенство 2-х объектов
 bool Fraction::operator==(Fraction & FractionRight)const
 {	

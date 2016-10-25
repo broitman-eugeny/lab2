@@ -28,6 +28,8 @@ public:
 	Fraction Abs()const;				//Возвращает дробь с числителем и знаменателем без знака 
 	//Перегрузка операторов
 	Fraction operator+(Fraction &Addendum);			//Сложение 2-х объектов
+	Fraction operator*(Fraction &Multiplier);		//Умножение 2-х объектов
+	Fraction operator/(Fraction &Divider);			//Деление 2-х объектов
 	bool operator==(Fraction &FractionRight)const;	//Равенство 2-х объектов
 	bool operator!=(Fraction &FractionRight)const;	//Неравенство 2-х объектов
 	bool operator>(Fraction &FractionRight)const;	//Первый объект больше второго
